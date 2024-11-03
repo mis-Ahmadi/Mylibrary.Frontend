@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: persian;
+    src: url('/fonts/persian.ttf');
+}
+*{
+    font-family: persian;
+}
+body{
+    margin: 0;
+    direction: rtl;
+}

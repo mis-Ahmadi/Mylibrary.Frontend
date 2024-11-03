@@ -1,0 +1,63 @@
+@if (action=='list') {
+@if (data&&data.length!=0) {
+<div>
+    <button (click)="add()">افزودن</button>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>شناسه</th>
+            <th>نام و نام خانوادگی</th>
+            <th>آدرس</th>
+            <th>شماره تلفن</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of data; track $index) {
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.fullname}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.phone}}</td>
+            <td>
+                <button (click)="edit(item)">ویرایش</button>
+                <button (click)="remove()">حذف</button>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+}
+@else {
+
+<div>لطفا کمی صبر کنید</div>
+}
+}
+@else {
+@if ( this.action != 'remove') {
+<form>
+    <div>
+        <input [(ngModel)]="entity.fullname" id="fullname" name="fullname" type="text" placeholder="نام و نام خانوادگی">
+    </div>
+    <div>
+        <input [(ngModel)]="entity.address" id="address" name="address" type="text" placeholder="آدرس">
+    </div>
+    <div>
+        <input [(ngModel)]="entity.phone" id="phone" name="phone" type="text" placeholder="شماره تلفن">
+    </div>
+
+    <div>
+        <button (click)="ok()">تایید</button>
+        <button (click)="cancel()">انصراف</button>
+    </div>
+</form>
+}}
+@if ( this.action == 'remove') {
+<div>
+    <button (click)="ok()">تایید</button>
+    <button (click)="cancel()">انصراف</button>
+</div>
+
+}
